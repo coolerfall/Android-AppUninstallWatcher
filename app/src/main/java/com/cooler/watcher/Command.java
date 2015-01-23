@@ -19,7 +19,7 @@ import java.io.InputStream;
 public class Command {
 	private static final String TAG = Command.class.getSimpleName();
 
-	private static final String BIN_DIR_NAME = "bin";
+	public static final String BIN_DIR_NAME = "bin";
 
 	/** copy file to destination */
 	private static void copyFile(File file, InputStream is, String mode)
