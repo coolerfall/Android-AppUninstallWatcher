@@ -17,6 +17,6 @@ public class WatcherApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		Watcher.run(this, URL);
+		Watcher.run(this, URL, true);
 	}
 }
