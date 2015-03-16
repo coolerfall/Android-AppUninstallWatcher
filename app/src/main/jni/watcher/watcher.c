@@ -16,11 +16,7 @@
 #include <signal.h>
 #include <unistd.h>
 #include <time.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <arpa/inet.h>
 #include <sys/types.h>
-#include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/inotify.h>
@@ -29,7 +25,6 @@
 #include "chttp.h"
 #include "common.h"
 
-#define PORT            80
 #define BUFFER_SIZE     4 * 1024
 #define LOG_TAG         "Watcher"
 
