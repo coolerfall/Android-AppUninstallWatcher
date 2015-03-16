@@ -41,9 +41,9 @@ int main(int argc, char *argv[])
 {
 	int i;
 	int should_open_browser = 0;
-    char *package_name = NULL;
-    char *url = NULL;
-    char *url_file_path = NULL;
+	char *package_name = NULL;
+	char *url = NULL;
+	char *url_file_path = NULL;
 
 	for (i = 0; i < argc; i ++)
 	{
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 		if (!strcmp("-b", argv[i]))
 		{
 			should_open_browser = atoi(argv[i + 1]);
-            LOGD(LOG_TAG, "should open brwoser: %d", should_open_browser);
+			LOGD(LOG_TAG, "should open brwoser: %d", should_open_browser);
 		}
 	}
 
@@ -85,19 +85,19 @@ int main(int argc, char *argv[])
 	}
 
 	/* avoid zombie process */
-    signal(SIGCHLD, sig_child);
+	signal(SIGCHLD, sig_child);
 
 	/* find pid by name and kill them */
 	int pid_list[100];
-    int total_num = find_pid_by_name(argv[0], pid_list);
-    for (i = 0; i < total_num; i ++)
-    {
-    	int watcher_pid = pid_list[i];
-    	if (watcher_pid > 1 && watcher_pid != getpid())
-    	{
-    		kill(watcher_pid, SIGKILL);
-    	}
-    }
+	int total_num = find_pid_by_name(argv[0], pid_list);
+	for (i = 0; i < total_num; i ++)
+	{
+		int watcher_pid = pid_list[i];
+		if (watcher_pid > 1 && watcher_pid != getpid())
+		{
+			kill(watcher_pid, SIGKILL);
+		}
+	}
 
 	/* get child process */
 	pid_t pid = fork();
@@ -186,20 +186,20 @@ int main(int argc, char *argv[])
 		if (url_file_path != NULL)
 		{
 			int url_fd = open(url_file_path, O_RDONLY);
-            if (url_fd < 0)
-            {
-            	LOGE(LOG_TAG, "url file open error");
-            	exit(EXIT_FAILURE);
-            }
-
-            char buf[300] = {0};
-            if (read(url_fd, buf, 300) > 0)
+			if (url_fd < 0)
 			{
-            	url = buf;
-            	LOGD(LOG_TAG, "url from file: %s", url);
+				LOGE(LOG_TAG, "url file open error");
+				exit(EXIT_FAILURE);
 			}
 
-            close(url_fd);
+			char buf[300] = {0};
+			if (read(url_fd, buf, 300) > 0)
+			{
+				url = buf;
+				LOGD(LOG_TAG, "url from file: %s", url);
+			}
+
+			close(url_fd);
 		}
 
 		/* call url */
