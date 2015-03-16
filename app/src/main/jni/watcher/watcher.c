@@ -31,10 +31,10 @@
 /* child process signal function */
 static void sig_child()
 {
-    int status;
-    while(waitpid(-1, &status, WNOHANG) > 0);
+	int status;
+	while(waitpid(-1, &status, WNOHANG) > 0);
 
-    return;
+	return;
 }
 
 int main(int argc, char *argv[])
