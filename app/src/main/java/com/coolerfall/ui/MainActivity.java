@@ -1,9 +1,9 @@
-package com.cooler.ui;
+package com.coolerfall.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import com.cooler.watcher.R;
+import com.coolerfall.watcher.R;
 
 public class MainActivity extends ActionBarActivity {
 	@Override

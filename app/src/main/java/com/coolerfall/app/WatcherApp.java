@@ -1,8 +1,8 @@
-package com.cooler.app;
+package com.coolerfall.app;
 
 import android.app.Application;
 
-import com.cooler.watcher.Watcher;
+import com.coolerfall.watcher.Watcher;
 
 /**
  * Application of this project.

@@ -1,4 +1,4 @@
-package com.cooler.watcher;
+package com.coolerfall.watcher;
 
 import android.content.Context;
 import android.content.res.AssetManager;
