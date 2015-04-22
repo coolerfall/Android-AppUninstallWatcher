@@ -5,7 +5,7 @@ android {
 	buildToolsVersion "21.1.2"
 
 	defaultConfig {
-		applicationId "com.coolerfall.watcher"
+		applicationId "com.coolerfall.watcher.sample"
 		minSdkVersion 9
 		targetSdkVersion 21
 		versionCode 1
@@ -18,32 +18,10 @@ android {
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
 	}
-
-	tasks.withType(JavaCompile) {
-		compileTask -> compileTask.dependsOn 'ndkBuild', 'copyJniLibs'
-	}
-
-	sourceSets {
-		main {
-			jni.srcDirs = []
-			jniLibs.srcDirs = ['src/main/jniLibs']
-		}
-	}
-}
-
-task ndkBuild(type: Exec) {
-	def ndkDir = project.plugins.findPlugin('com.android.application').getNdkFolder()
-	commandLine "$ndkDir/ndk-build.cmd", '-C', 'src/main/jni',
-			"NDK_OUT=$buildDir/ndk/obj",
-			"NDK_APP_DST_DIR=$buildDir/ndk/libs/\$(TARGET_ARCH_ABI)"
-}
-
-task copyJniLibs(type: Copy) {
-	from fileTree(dir: file(buildDir.absolutePath + '/ndk/libs'), include: '**/*')
-	into file('src/main/jniLibs')
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile fileTree(include: ['*.jar'], dir: 'libs')
 	compile 'com.android.support:appcompat-v7:21.0.3'
+	compile project(':library')
 }
