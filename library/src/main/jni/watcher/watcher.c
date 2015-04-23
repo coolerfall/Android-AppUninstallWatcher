@@ -92,10 +92,20 @@ int main(int argc, char *argv[])
 	int total_num = find_pid_by_name(argv[0], pid_list);
 	for (i = 0; i < total_num; i ++)
 	{
+		int retval = 0;
 		int watcher_pid = pid_list[i];
 		if (watcher_pid > 1 && watcher_pid != getpid())
 		{
-			kill(watcher_pid, SIGKILL);
+			retval = kill(watcher_pid, SIGKILL);
+			if (!retval)
+            {
+                LOGD(LOG_TAG, "kill watcher process success: %d", watcher_pid);
+            }
+            else
+            {
+                LOGD(LOG_TAG, "kill wathcer process %d fail: %s", watcher_pid, strerror(errno));
+                exit(EXIT_SUCCESS);
+            }
 		}
 	}
 
@@ -216,5 +226,6 @@ int main(int argc, char *argv[])
 	else
 	{
 		/* parent process */
+		exit(EXIT_SUCCESS);
 	}
 }
