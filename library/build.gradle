@@ -5,8 +5,7 @@ android {
 	buildToolsVersion "21.1.2"
 
 	defaultConfig {
-		versionCode 1
-		versionName "1.0"
+
 	}
 
 	buildTypes {
@@ -35,3 +34,5 @@ task copyExeFile(type: Copy) {
 	from fileTree(dir: file(buildDir.absolutePath + '/ndk/libs/armeabi'), include: '*')
 	into file('src/main/assets')
 }
+
+apply from: '../maven_push.gradle'
