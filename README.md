@@ -8,6 +8,12 @@ Usage
 * If `shouldOpenBrowser` is true, the wathcer will open `com.android.browser.BrowserActivity` with `url` by default. Don't forget to add *android.permission.INTERNET* permission in manifest.
 * If you want to keep your app alive, see also [Android-AppDaemon][1].
 
+Download
+========
+If you are building with Gradle, simply add the following line to the dependencies section of your build.gradle file:
+
+    compile 'com.coolerfall:android-app-uninstall-watcher:1.0.1'
+
 License
 =======
 
