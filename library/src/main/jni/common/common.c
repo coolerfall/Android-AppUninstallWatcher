@@ -50,25 +50,16 @@ void open_browser(char *url)
 		return;
 	}
 
-	/* get the sdk version */
-	char value[8] = "";
-	__system_property_get("ro.build.version.sdk", value);
-
-	int version = atoi(value);
+	int version = get_version();
 	/* is the version is greater than 17 */
 	if (version >= 17 || version == 0)
 	{
-		execlp("am", "am", "start", "--user", "0", "-n",
-				"com.android.browser/com.android.browser.BrowserActivity",
-				"-a", "android.intent.action.VIEW",
-				"-d", url, (char *)NULL);
+		execlp("am", "am", "start", "--user", "0",
+				"-a", "android.intent.action.VIEW", "-d", url, (char *)NULL);
 	}
 	else
 	{
-		execlp("am", "am", "start", "-n",
-				"com.android.browser/com.android.browser.BrowserActivity",
-				"-a", "android.intent.action.VIEW",
-				"-d", url, (char *)NULL);
+		execlp("am", "am", "start", "-a", "android.intent.action.VIEW", "-d", url, (char *)NULL);
 	}
 }
 
