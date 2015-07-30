@@ -5,8 +5,12 @@ App uninstall watcher. You can monitor uninstall of your app.
 Usage
 =====
 * This wathcer can be added in application or service in your app, use `Watcher.run(context, url, shouldOpenBrowser)` to run the watcher.
-* If `shouldOpenBrowser` is true, the wathcer will open `com.android.browser.BrowserActivity` with `url` by default. Don't forget to add *android.permission.INTERNET* permission in manifest.
+* If `shouldOpenBrowser` is true, the wathcer will open default browser with `url`. Don't forget to add *android.permission.INTERNET* permission in manifest.
 * If you want to keep your app alive, see also [Android-AppDaemon][1].
+
+Note
+====
+This library dosen't work on all phones, such as xiaomi phones.
 
 Download
 ========
