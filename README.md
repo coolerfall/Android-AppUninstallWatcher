@@ -16,7 +16,7 @@ Download
 ========
 If you are building with Gradle, simply add the following line to the dependencies section of your build.gradle file:
 
-    compile 'com.coolerfall:android-app-uninstall-watcher:1.0.2'
+    compile 'com.coolerfall:android-app-uninstall-watcher:1.0.3'
 
 License
 =======
