@@ -39,23 +39,6 @@ public class Command {
 	}
 
 	/**
-	 * copy files in raw into destination file.
-	 *
-	 * @param  context context
-	 * @param  resid   the resource id of file in raw
-	 * @param  file    the file to copy to
-	 * @param  mode    mode of file
-	 *
-	 * @throws IOException
-	 * @throws InterruptedException
-	 */
-	public static void copyRawFile(Context context, int resid, File file, String mode)
-			throws IOException, InterruptedException {
-		final InputStream is = context.getResources().openRawResource(resid);
-		copyFile(file, is, mode);
-	}
-
-	/**
 	 * copy file in assets into destination file
 	 *
 	 * @param  context        context

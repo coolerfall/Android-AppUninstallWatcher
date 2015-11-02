@@ -45,6 +45,8 @@ int main(int argc, char *argv[])
 	char *url = NULL;
 	char *url_file_path = NULL;
 
+	LOGI(LOG_TAG, "Copyright (c) 2015, Vincent Cheung<coolingfall@gmail.com>");
+
 	for (i = 0; i < argc; i ++)
 	{
 		if (!strcmp("-p", argv[i]))
