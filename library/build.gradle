@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
 	compileSdkVersion 23
-	buildToolsVersion "23.0.1"
+	buildToolsVersion "23.0.3"
 
 	defaultConfig {
 		minSdkVersion 8
@@ -24,16 +24,17 @@ android {
 	}
 }
 
+
 task ndkBuild(type: Exec) {
 	def ndkDir = project.plugins.findPlugin('com.android.library').sdkHandler.getNdkFolder()
 	commandLine "$ndkDir/ndk-build.cmd", '-C', 'src/main/jni',
-			"NDK_OUT=$buildDir/ndk/obj",
-			"NDK_APP_DST_DIR=$buildDir/ndk/libs/\$(TARGET_ARCH_ABI)"
+		"NDK_OUT=$buildDir/ndk/obj",
+		"NDK_APP_DST_DIR=$buildDir/ndk/libs/\$(TARGET_ARCH_ABI)"
 }
 
 task copyExeFile(type: Copy) {
-	from fileTree(dir: file(buildDir.absolutePath + '/ndk/libs/armeabi'), include: '*')
-	into file('src/main/assets')
+	from fileTree(dir: file(buildDir.absolutePath + '/ndk/libs'), include: '**/*')
+	into file('src/main/assets/')
 }
 
 apply from: '../maven_push.gradle'
